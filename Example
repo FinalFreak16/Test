@@ -4,7 +4,7 @@ function Start()
 	gui = GetComponent( GUITexture );
 	
 	// Store the default rect for the gui, so we can snap back to it
-	defaultRect = gui.pixelInset;	
+	defaultRect = gui.pixelInset;	HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
     
     defaultRect.x += transform.position.x * Screen.width;// + gui.pixelInset.x; // -  Screen.width * 0.5;
     defaultRect.y += transform.position.y * Screen.height;// - Screen.height * 0.5;
