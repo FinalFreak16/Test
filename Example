@@ -34,6 +34,5 @@ function Start()
 		guiBoundary.max.x = defaultRect.x + guiTouchOffset.x;
 		guiBoundary.min.y = defaultRect.y - guiTouchOffset.y;
 		guiBoundary.max.y = defaultRect.y + guiTouchOffset.y;
-
 	}
 }
