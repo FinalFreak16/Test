@@ -1,0 +1,38 @@
+function Start()
+{
+    // Cache this component at startup instead of looking up every frame	
+	gui = GetComponent( GUITexture );
+	
+	// Store the default rect for the gui, so we can snap back to it
+	defaultRect = gui.pixelInset;	
+    
+    defaultRect.x += transform.position.x * Screen.width;// + gui.pixelInset.x; // -  Screen.width * 0.5;
+    defaultRect.y += transform.position.y * Screen.height;// - Screen.height * 0.5;
+    
+    transform.position.x = 0.0;
+    transform.position.y = 0.0;
+        
+	if ( touchPad )
+	{
+		// If a texture has been assigned, then use the rect from the gui as our touchZone
+		if ( gui.texture )
+			touchZone = defaultRect;
+	}
+	else
+	{				
+		// This is an offset for touch input to match with the top left
+		// corner of the GUI
+		guiTouchOffset.x = defaultRect.width * 0.5;
+		guiTouchOffset.y = defaultRect.height * 0.5;
+		
+		// Cache the center of the GUI, since it doesn't change
+		guiCenter.x = defaultRect.x + guiTouchOffset.x;
+		guiCenter.y = defaultRect.y + guiTouchOffset.y;
+		
+		// Let's build the GUI boundary, so we can clamp joystick movement
+		guiBoundary.min.x = defaultRect.x - guiTouchOffset.x;
+		guiBoundary.max.x = defaultRect.x + guiTouchOffset.x;
+		guiBoundary.min.y = defaultRect.y - guiTouchOffset.y;
+		guiBoundary.max.y = defaultRect.y + guiTouchOffset.y;
+	}
+}
